@@ -82,14 +82,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="저장"
-                    android:layout_marginEnd="20dp"/>
+                    android:layout_marginEnd="20dp"
+                    android:background="#757CDC"
+                    android:textColor="#FFFFFF"/>
 
             <!-- 몸무게일지 화면으로 전환되는 버튼 -->
                 <Button
                     android:id="@+id/record_weight_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="일지" />
+                    android:text="일지"
+                    android:background="#757CDC"
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 
@@ -136,21 +140,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:text="산책 시작" />
+                    android:text="산책 시작"
+                    android:background="#757CDC"
+                    android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/stop_walk_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:text="산책 종료" />
+                    android:text="산책 종료"
+                    android:background="#757CDC"
+                    android:textColor="#FFFFFF" />
 
                 <!-- 산책일지 화면으로 전환되는 버튼 -->
                 <Button
                     android:id="@+id/record_walk_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="일지" />
+                    android:text="일지"
+                    android:background="#757CDC"
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 
