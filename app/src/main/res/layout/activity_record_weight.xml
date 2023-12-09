@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="37dp"
         android:text="몸무게일지"
-        android:textSize="20dp"
+        android:textSize="35dp"
         app:layout_constraintBottom_toTopOf="@+id/rv_weight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
