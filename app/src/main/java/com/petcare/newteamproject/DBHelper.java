@@ -79,5 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM petWeight WHERE id = '" + _id +"'"); // id 값을 활용해 값 제거
     }
+
+
 }
 
