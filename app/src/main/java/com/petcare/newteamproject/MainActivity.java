@@ -64,9 +64,11 @@ public class MainActivity extends AppCompatActivity {
         // 몸무게 저장 버튼 리스너 설정
         saveWeightButton.setOnClickListener(new View.OnClickListener(){
             @Override
+            // 몸무게 저장
             public void onClick(View v) {
                 saveWeight();
             }
+            // Insert UI ?
         });
 
         // 몸무게 일지 버튼 리스너 설정
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // saveWeight 메소드 사용해 사용자가 입력한 몸무게 검증
+    // 몸무게 저장 : saveWeight 메소드 사용해 사용자가 입력한 몸무게 검증
     private void saveWeight(){
         // EditText 에서 입력된 몸무게 값을 문자열로 가져옴
         String weightStr = weightInput.getText().toString();
