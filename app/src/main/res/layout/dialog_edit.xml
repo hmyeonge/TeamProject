@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- 몸무게 기록 팝업창 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- 몸무게를 입력하세요 문구 -->
         <TextView
             android:id="@+id/tv_weight_title"
             android:layout_width="wrap_content"
@@ -27,28 +29,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- 몸무게 입력란 -->
         <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="200dp"
+            android:id="@+id/tv_weight_input"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="8dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:singleLine="true"
-            tools:layout_editor_absoluteX="17dp"
-            tools:layout_editor_absoluteY="43dp" />
+            app:layout_constraintEnd_toStartOf="@+id/tv_kg_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_weight_title" />
 
+        <!-- kg라벨 -->
         <TextView
             android:id="@+id/tv_kg_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="96dp"
             android:layout_marginBottom="6dp"
             android:text="kg"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
-            app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_weight_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_weight_input" />
 
+        <!-- 몸무게 저장 버튼 -->
         <Button
             android:id="@+id/bt_saveWeight"
             android:layout_width="70dp"

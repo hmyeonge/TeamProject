@@ -1,7 +1,9 @@
 package com.petcare.newteamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         stopButton = findViewById(R.id.stop_walk_button);
         saveWeightButton = findViewById(R.id.save_weight_button);
         weightInput = findViewById(R.id.weight_input);
+        Button recordWeightButton = findViewById(R.id.record_weight_button);
 
         // DBHelper 인스턴스화
         dbHelper = new DBHelper(this);
@@ -64,6 +68,17 @@ public class MainActivity extends AppCompatActivity {
                 saveWeight();
             }
         });
+
+        // 몸무게 일지 버튼 리스너 설정
+        recordWeightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 인텐트를 사용해 RecordWeightActivity 라는 새 액티비티 시작
+                Intent intent = new Intent(MainActivity.this, RecordWeightActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // saveWeight 메소드 사용해 사용자가 입력한 몸무게 검증
