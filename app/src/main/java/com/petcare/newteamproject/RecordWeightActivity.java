@@ -1,6 +1,8 @@
 package com.petcare.newteamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
@@ -37,6 +39,11 @@ public class RecordWeightActivity extends AppCompatActivity {
         mDBHelper  = new DBHelper(this);
         mrv_weight = findViewById(R.id.rv_weight); // rv_weight 는 리사이클러뷰의 id
         mWeightItems = new ArrayList<>();
+
+        // 구분선 생성 : DividerItemDecoration 객체를 생성하고 리사이클러뷰에 추가
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mrv_weight.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        mrv_weight.addItemDecoration(dividerItemDecoration);
 
         loadRecentDB();
 
