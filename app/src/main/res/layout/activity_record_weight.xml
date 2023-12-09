@@ -10,30 +10,37 @@
         android:id="@+id/text_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="37dp"
-        android:text="몸무게일지"
-        android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/rv_weight"
+        android:layout_marginTop="32dp"
+        android:text="체중 기록 일지"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="날짜별 체중을 확인할 수 있어요"
+        app:layout_constraintTop_toBottomOf="@+id/text_weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <!-- list_item 을 사용하는 RecyclerView  -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_weight"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        tools:listitem="@layout/item_list"
+        android:layout_marginBottom="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_weight" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:listitem="@layout/item_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
