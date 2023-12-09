@@ -39,11 +39,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- 오늘의 몸무게를 기록하세요 문구 -->
+            <!-- 오늘의 체중을 기록하세요 문구 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="오늘의 몸무게를 기록하세요 "
+                android:text="오늘의 체중을 기록하세요"
                 android:gravity="center"/>
 
             <LinearLayout

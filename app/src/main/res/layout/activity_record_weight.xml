@@ -26,6 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_weight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- list_item 을 사용하는 RecyclerView  -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_weight"
