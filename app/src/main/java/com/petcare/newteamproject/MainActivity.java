@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 saveWeight();
             }
-            // Insert UI ?
         });
 
         // 몸무게 일지 버튼 리스너 설정

@@ -68,4 +68,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
     }
 
+    // 액티비티에서 호출되는 함수, 현재 어댑터에 새로운 아이템을 전달받아 추가
+    public void addItem(WeightItem _item){
+        // 역순으로 데이터 정렬 : 항상 최신 아이템이 맨 위로 오도록
+        nWeightItems.add(0, _item);
+        notifyItemInserted(0);
+    }
 }

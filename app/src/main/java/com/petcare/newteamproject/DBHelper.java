@@ -67,19 +67,5 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO petWeight(weight, writeDate) VALUES ('"+ _weight + "' , '"+ _writeDate + "')");
     }
 
-    // UPDATE (몸무게 목록을 수정한다)
-    public void updateWeight(Double _weight, String _writeDate, int _id){
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("UPDATE petWeight SET weight= '" + _weight + "', writeDate= '" + _writeDate + "' WHERE id = '" + _id  + "'"); //  id 값을 활용해서 해당 몸무게 값을 수정
-
-    }
-
-    // DELETE (몸무게 목록을 제거한다)
-    public void deleteWeight(int _id){
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM petWeight WHERE id = '" + _id +"'"); // id 값을 활용해 값 제거
-    }
-
-
 }
 
