@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         if(!weightStr.isEmpty()) {
             try {
                 Toast.makeText(MainActivity.this, "몸무게값이 저장되었습니다", Toast.LENGTH_SHORT).show();
+
                 // 문자열을 double 타입으로 변환해 몸무게 값으로 사용
                 double weight = Double.parseDouble(weightStr);
 
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // DBHelper 인스턴스로 데이터베이스에 몸무게랑 날짜 저장
                 dbHelper.InsertWeight(weight, currentDate);
+
             } catch (NumberFormatException e) {
                 // EditText 에 숫자를 입력하지 않는 경우 토스트 메시지를 띄움
                 Toast.makeText(MainActivity.this, "유효한 숫자를 입력하세요", Toast.LENGTH_SHORT).show();

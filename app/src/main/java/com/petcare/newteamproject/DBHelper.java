@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -30,7 +31,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
         onCreate(db);
     }
 
@@ -56,15 +56,25 @@ public class DBHelper extends SQLiteOpenHelper {
           }
        }
       cursor.close();
-
       return weightItems;
     }
 
     // INSERT (몸무게 목록을 DB에 넣음)
-    // 어디서나 접근 가능하게 public 로 지정
     public void InsertWeight(Double _weight, String _writeDate){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("INSERT INTO petWeight(weight, writeDate) VALUES ('"+ _weight + "' , '"+ _writeDate + "')");
+    }
+
+    // 로그
+    public SQLiteDatabase getWritableDatabase() {
+        Log.d("DBHelper", "데이터베이스 열기");
+        return super.getWritableDatabase();
+    }
+
+    @Override
+    public void close() {
+        Log.d("DBHelper", "데이터베이스 닫기");
+        super.close();
     }
 
 }
