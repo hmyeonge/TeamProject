@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:text="저장"
                     android:layout_marginEnd="20dp"
-                    android:background="#757CDC"
+                    android:background="@drawable/button_round"
                     android:textColor="#FFFFFF"/>
 
             <!-- 몸무게일지 화면으로 전환되는 버튼 -->
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일지"
-                    android:background="#757CDC"
+                    android:background="@drawable/button_round"
                     android:textColor="#FFFFFF" />
 
             </LinearLayout>
@@ -141,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:text="산책 시작"
-                    android:background="#757CDC"
+                    android:background="@drawable/button_round"
                     android:textColor="#FFFFFF" />
 
                 <Button
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:text="산책 종료"
-                    android:background="#757CDC"
+                    android:background="@drawable/button_round"
                     android:textColor="#FFFFFF" />
 
                 <!-- 산책일지 화면으로 전환되는 버튼 -->
@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일지"
-                    android:background="#757CDC"
+                    android:background="@drawable/button_round"
                     android:textColor="#FFFFFF" />
 
             </LinearLayout>
