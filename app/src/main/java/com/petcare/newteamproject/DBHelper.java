@@ -27,11 +27,21 @@ public class DBHelper extends SQLiteOpenHelper {
         // 테이블 이름은 petWeight , id와 weight, writeDate 컬럼을 가짐
         // weight 컬럼은 실수 형태의 몸무게 값을 저장함
         db.execSQL("CREATE TABLE IF NOT EXISTS petWeight (id INTEGER PRIMARY KEY AUTOINCREMENT, weight REAL NOT NULL, writeDate TEXT NOT NULL)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onCreate(db);
+        if (oldVersion < newVersion) {
+            // 버전에 따라 다양한 업그레이드 작업을 수행
+            switch (oldVersion) {
+                case 1:
+                    // petWeight 테이블에 userID 컬럼 추가
+                    db.execSQL("ALTER TABLE petWeight ADD COLUMN userID INTEGER NOT NULL DEFAULT 1");
+                case 2:
+                    // 이후 업그레이드 작업을 수행
+            }
+        }
     }
 
     // SELECT (몸무게 목록 조회)
