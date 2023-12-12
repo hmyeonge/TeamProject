@@ -10,10 +10,10 @@ public class WeightItem
     {
     }
 
+    // Getter 및 Setter 메소드
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -21,7 +21,6 @@ public class WeightItem
     public Double getWeight() {
         return weight;
     }
-
     public void setWeight(Double weight) {
         this.weight = weight;
     }
@@ -29,7 +28,6 @@ public class WeightItem
     public String getWriteDate() {
         return writeDate;
     }
-
     public void setWriteDate(String writeDate) {
         this.writeDate = writeDate;
     }

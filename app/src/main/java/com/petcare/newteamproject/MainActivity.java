@@ -46,6 +46,26 @@ public class MainActivity extends AppCompatActivity {
         // DBHelper 인스턴스화
         dbHelper = new DBHelper(this);
 
+
+        // 체중 저장 버튼 리스너 설정
+        saveWeightButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            // 몸무게 저장
+            public void onClick(View v) {
+                saveWeight();
+            }
+        });
+
+        // 체중 일지 버튼 리스너 설정
+        recordWeightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 인텐트를 사용해 RecordWeightActivity 라는 새 액티비티 시작
+                Intent intent = new Intent(MainActivity.this, RecordWeightActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // 산책 시작 버튼 리스너 설정
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,25 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 몸무게 저장 버튼 리스너 설정
-        saveWeightButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            // 몸무게 저장
-            public void onClick(View v) {
-                saveWeight();
-            }
-        });
-
-        // 몸무게 일지 버튼 리스너 설정
-        recordWeightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 인텐트를 사용해 RecordWeightActivity 라는 새 액티비티 시작
-                Intent intent = new Intent(MainActivity.this, RecordWeightActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        // 산책 일지 버튼 리스너
         recordWalkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

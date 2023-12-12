@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-// 체중일지 화면
+// 체중 일지 화면
 public class RecordWeightActivity extends AppCompatActivity {
 
     private RecyclerView mrv_weight;
