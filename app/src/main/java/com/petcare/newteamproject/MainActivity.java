@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // 몸무게 저장 : saveWeight 메소드 사용해 사용자가 입력한 몸무게 검증
+    // 체중 저장 : saveWeight 메소드 사용해 사용자가 입력한 몸무게 검증
     private void saveWeight(){
-        // EditText 에서 입력된 몸무게 값을 문자열로 가져옴
+        // EditText 에서 입력된 체중 값을 문자열로 가져옴
         String weightStr = weightInput.getText().toString();
 
         // 입력된 문자열이 비어있지 않은지 확인
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 // 현재 날짜를 문자열로 가져오는 메소드 호출
                 String currentDate = getCurrentDate();
 
-                // DBHelper 인스턴스로 데이터베이스에 몸무게랑 날짜 저장
+                // DBHelper 인스턴스로 데이터베이스에 체중이랑 날짜 저장
                 dbHelper.InsertWeight(weight, currentDate);
 
             } catch (NumberFormatException e) {
