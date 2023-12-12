@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -17,6 +18,7 @@ import java.util.Locale;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -111,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
                 // 현재 날짜를 문자열로 가져오는 메소드 호출
                 String currentDate = getCurrentDate();
 
+                // 로그로 현재 날짜 출력
+                Log.d("Current Date", currentDate);
+
                 // DBHelper 인스턴스로 데이터베이스에 체중이랑 날짜 저장
                 dbHelper.InsertWeight(weight, currentDate);
 
@@ -126,7 +131,9 @@ public class MainActivity extends AppCompatActivity {
 
     // 현재 날짜를 yyyy-mm-dd 형식 문자열로 변환
     private String getCurrentDate() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
         return dateFormat.format(new Date());
     }
+
 }
