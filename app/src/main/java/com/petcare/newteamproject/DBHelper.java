@@ -15,7 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // 클래스 외부에서는 호출을 못하도록 private 로 지정
     private static final int DB_VERSION = 2; // DB 버전 지정
-    private static final String DB_NAME = "pet-weight.db"; // DB 이름 지정, 나중에 이름 수정 !
+    private static final String DB_NAME = "pet-weight.db"; // DB 이름 지정
 
     public DBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);

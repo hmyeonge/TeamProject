@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // 체중 저장 버튼 리스너 설정
         saveWeightButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            // 몸무게 저장
+            // 체중 저장
             public void onClick(View v) {
                 saveWeight();
             }
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // 체중 저장 : saveWeight 메소드 사용해 사용자가 입력한 몸무게 검증
+    // 체중 저장 : saveWeight 메소드 사용해 사용자가 입력한 체중 검증
     private void saveWeight(){
         // EditText 에서 입력된 체중 값을 문자열로 가져옴
         String weightStr = weightInput.getText().toString();
@@ -105,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
         // 입력된 문자열이 비어있지 않은지 확인
         if(!weightStr.isEmpty()) {
             try {
-                Toast.makeText(MainActivity.this, "몸무게값이 저장되었습니다", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "체중값이 저장되었습니다", Toast.LENGTH_SHORT).show();
 
-                // 문자열을 double 타입으로 변환해 몸무게 값으로 사용
+                // 문자열을 double 타입으로 변환해 체중 값으로 사용
                 double weight = Double.parseDouble(weightStr);
 
                 // 현재 날짜를 문자열로 가져오는 메소드 호출
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             // EditText 값이 비어있는 경우 오류 메시지 출력
-            Toast.makeText(MainActivity.this, "반려동물의 몸무게를 입력하세요", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "반려동물의 체중을 입력하세요", Toast.LENGTH_SHORT).show();
         }
     }
 
