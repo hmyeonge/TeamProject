@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+// 체중일지 화면
 public class RecordWeightActivity extends AppCompatActivity {
 
     private RecyclerView mrv_weight;
@@ -49,7 +50,7 @@ public class RecordWeightActivity extends AppCompatActivity {
 
     }
 
-    // DB 로부터 저장된 모든 몸무게 데이터를 로드하고, 이 데이터를 RecyclerView 를 통해 표시함
+    // DB 로부터 저장된 모든 체중 데이터를 로드하고, 이 데이터를 RecyclerView 를 통해 표시함
     private void loadRecentDB() {
         // 데이터베이스에 저장된 체중 데이터를 조회해 ArrayList<WeightItem> 형태로 반환
         mWeightItems = mDBHelper.get_petWeight();
