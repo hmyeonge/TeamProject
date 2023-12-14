@@ -4,18 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Dialog;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 // 체중 일지 화면
 public class RecordWeightActivity extends AppCompatActivity {
