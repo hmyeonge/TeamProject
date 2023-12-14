@@ -48,7 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        // RecyclierView 화면에 표시될 아이템 총 개수 반환하는 메서드
+        // RecyclerView 화면에 표시될 아이템 총 개수 반환하는 메서드
         // nWeightItems 리스트의 아이템 수를 반환
         return nWeightItems.size();
     }

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class RecordWeightActivity extends AppCompatActivity {
 
     private RecyclerView mrv_weight;
-    private RecyclerView mBtn_write;
     private ArrayList<WeightItem> mWeightItems;
     private DBHelper mDBHelper;
     private CustomAdapter nAdapter;

@@ -13,7 +13,10 @@ public class WalkItem {
     }
 
     public WalkItem(int id, String userID, String time, String writeDate) {
-
+        this.id = id;
+        this.userID = userID;
+        this.time = time;
+        this.writeDate = writeDate;
     }
 
     // Getter 및 Setter 메소드

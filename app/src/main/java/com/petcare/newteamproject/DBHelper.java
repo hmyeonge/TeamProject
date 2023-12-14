@@ -62,7 +62,6 @@ public class DBHelper extends SQLiteOpenHelper {
             @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
             @SuppressLint("Range") Double weight = cursor.getDouble(cursor.getColumnIndex("weight"));
             @SuppressLint("Range") String writeDate = cursor.getString(cursor.getColumnIndex("writeDate"));
-            @SuppressLint("Range") String retrievedUserID = cursor.getString(cursor.getColumnIndex("userID"));
 
             // 커서를 이용해 데이터를 WeightItem 객체로 변환
             WeightItem weightItem = new WeightItem(id, userID, weight, writeDate);
@@ -81,15 +80,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     // 산책 데이터 조회
-    public ArrayList<WalkItem> getPetWalk() {
+    public ArrayList<WalkItem> getPetWalkByUser(String userID) {
         ArrayList<WalkItem> walkItems = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM petWalk ORDER BY writeDate DESC", null);
+        // 사용자 ID에 따라 데이터를 필터링하여 조회
+        Cursor cursor = db.rawQuery("SELECT * FROM petWalk WHERE userID = ? ORDER BY writeDate DESC", new String[] {userID});
         if (cursor.getCount() != 0) {
             while (cursor.moveToNext()) {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
-                @SuppressLint("Range") String userID = cursor.getString(cursor.getColumnIndex("userID"));
                 @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time"));
                 @SuppressLint("Range") String writeDate = cursor.getString(cursor.getColumnIndex("writeDate"));
 
@@ -97,7 +96,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 walkItems.add(walkItem);
             }
         }
-        cursor.close(); // Cursor 객체를 사용해 쿼리 결과를 처리, close( ) 메소드 호출로 리소스 해제
+        cursor.close();
         return walkItems;
     }
 
