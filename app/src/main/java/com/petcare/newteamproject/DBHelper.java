@@ -16,19 +16,22 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 3; // DB 버전 지정
     private static final String DB_NAME = "pet-weight.db"; // DB 이름 지정
 
+    // DBHelper 생성자
     public DBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+    // 데이터베이스 생성 시 호출되는 메소드
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // 데이터베이스가 생성될 때 호출되어 테이블이 없으면 테이블 생성
-        // petWeight 테이블 : id , weight , writeDate 컬럼을 가짐 (이후 userID 컬럼 추가)
-        // petWalk 테이블 : id , userID , time , writeDate 컬럼을 가짐
+        // petWeight 테이블 생성 : id , weight , writeDate 컬럼을 가짐 (이후 userID 컬럼 추가)
         db.execSQL("CREATE TABLE IF NOT EXISTS petWeight (id INTEGER PRIMARY KEY AUTOINCREMENT, weight REAL NOT NULL, writeDate TEXT NOT NULL)");
+
+        // petWalk 테이블 : id , userID , time , writeDate 컬럼을 가짐
         db.execSQL("CREATE TABLE IF NOT EXISTS petWalk (id INTEGER PRIMARY KEY AUTOINCREMENT , userID TEXT NOT NULL, time TEXT NOT NULL , writeDate TEXT NOT NULL)");
     }
 
+    // 데이터베이스 업그레이드 시 호출되는 메소드
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 2) {
@@ -48,30 +51,28 @@ public class DBHelper extends SQLiteOpenHelper {
         // 추가 업그레이드 작업
     }
 
-    // SELECT (체중 데이터 조회)
-    public ArrayList<WeightItem> get_petWeight() {
-      ArrayList<WeightItem> weightItems = new ArrayList<>();
+    // 사용자별 반려동물의 체중 데이터 조회
+    public ArrayList<WeightItem> getPetWeightByUser(String userID) {
+        ArrayList<WeightItem> weightItems = new ArrayList<>();
 
-      SQLiteDatabase db = getReadableDatabase();
-      Cursor cursor = db.rawQuery("SELECT * FROM petWeight ORDER BY writeDate DESC", null);
-      if(cursor.getCount() != 0){
-          while (cursor.moveToNext()){
-              @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
-              @SuppressLint("Range") Double weight = cursor.getDouble(cursor.getColumnIndex("weight"));
-              @SuppressLint("Range") String writeDate = cursor.getString(cursor.getColumnIndex("writeDate"));
+        // 사용자 ID 를 기준으로 petWeight 테이블에서 데이터를 조회
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM petWeight WHERE userID = ? ORDER BY writeDate DESC", new String[] {userID});
+        while (cursor.moveToNext()) {
+            @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
+            @SuppressLint("Range") Double weight = cursor.getDouble(cursor.getColumnIndex("weight"));
+            @SuppressLint("Range") String writeDate = cursor.getString(cursor.getColumnIndex("writeDate"));
+            @SuppressLint("Range") String retrievedUserID = cursor.getString(cursor.getColumnIndex("userID"));
 
-              WeightItem weightItem = new WeightItem();
-              weightItem.setId(id);
-              weightItem.setWeight(weight);
-              weightItem.setWriteDate(writeDate);
-              weightItems.add(weightItem);
-          }
-       }
-      cursor.close(); // Cursor 객체를 사용해 쿼리 결과를 처리, close( ) 메소드 호출로 리소스 해제
-      return weightItems;
+            // 커서를 이용해 데이터를 WeightItem 객체로 변환
+            WeightItem weightItem = new WeightItem(id, userID, weight, writeDate);
+            weightItems.add(weightItem);
+        }
+        cursor.close(); // 커서 닫기
+        return weightItems;
     }
 
-    // INSERT (체중 데이터를 DB에 삽입)
+    // 추가되는 체중 데이터를 데이터베이스에 삽입
     // TODO : userID
     public void InsertWeight(String userID, Double weight, String writeDate){
         SQLiteDatabase db = getWritableDatabase();
@@ -79,8 +80,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    // 산책 데이터베이스의 SELECT 문과 INSERT 문
-    // SELECT (산책 데이터 조회)
+    // 산책 데이터 조회
     public ArrayList<WalkItem> getPetWalk() {
         ArrayList<WalkItem> walkItems = new ArrayList<>();
 
@@ -101,19 +101,20 @@ public class DBHelper extends SQLiteOpenHelper {
         return walkItems;
     }
 
-    // INSERT (산책 데이터 삽입)
+    // 산책 데이터 삽입
     public void InsertWalk(String userID, String time, String writeDate){
         SQLiteDatabase db = getWritableDatabase(); // SQLiteDatabase 객체 가져옴
         db.execSQL("INSERT INTO petWalk (userID, time, writeDate) VALUES ('" + userID + "', '" + time + "', '" + writeDate + "')");
     }
 
 
-    // 로그
+    // 데이터베이스 열기 로그
     public SQLiteDatabase getWritableDatabase() {
         Log.d("DBHelper", "데이터베이스 열기");
         return super.getWritableDatabase();
     }
 
+    // 데이터베이스 닫기 로그
     @Override
     public void close() {
         Log.d("DBHelper", "데이터베이스 닫기");

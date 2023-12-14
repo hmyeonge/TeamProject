@@ -46,14 +46,15 @@ public class RecordWeightActivity extends AppCompatActivity {
                 new LinearLayoutManager(this).getOrientation());
         mrv_weight.addItemDecoration(dividerItemDecoration);
 
-        loadRecentDB();
+        String tempUserID = "tempUser"; // 임시 userID 설정 , TODO : userID 연결 이후에 삭제
+        loadRecentDB(tempUserID); // TODO : tempUserID를 제거
 
     }
 
     // DB 로부터 저장된 모든 체중 데이터를 로드하고, 이 데이터를 RecyclerView 를 통해 표시함
-    private void loadRecentDB() {
+    private void loadRecentDB(String userID) {
         // 데이터베이스에 저장된 체중 데이터를 조회해 ArrayList<WeightItem> 형태로 반환
-        mWeightItems = mDBHelper.get_petWeight();
+        mWeightItems = mDBHelper.getPetWeightByUser(userID);
         if(nAdapter == null){
             // nAdapter 가 초기화되지 않았으면 CustomAdapter 인스턴스를 생성
             // 해당 어댑터는 mWeightItems 리스트를 사용해 RecyclerView 에 데이터 표시
