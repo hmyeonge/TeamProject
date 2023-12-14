@@ -1,6 +1,8 @@
 package com.petcare.newteamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -30,6 +32,11 @@ public class RecordWalkActivity extends AppCompatActivity {
         mDBHelper = new DBHelper(this);
         mrv_walk = findViewById(R.id.rv_walk); // rv_walk 는 리사이클러뷰의 id
         mWalkItems = new ArrayList<>();
+
+        // 구분선 생성 : DividerItemDecoration 객체를 생성하고 리사이클러뷰에 추가
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mrv_walk.getContext(),
+                new LinearLayoutManager(this).getOrientation());
+        mrv_walk.addItemDecoration(dividerItemDecoration);
 
         String tempUserID = "tempUser"; // 임시 userID 설정 , TODO : userID 연결 이후에 삭제
         loadRecentDB(tempUserID); // TODO : tempUserID를 제거
