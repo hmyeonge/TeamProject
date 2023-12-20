@@ -14,7 +14,7 @@ public class RecordWeightActivity extends AppCompatActivity {
     private RecyclerView mrv_weight;
     private ArrayList<WeightItem> mWeightItems;
     private DBHelper mDBHelper;
-    private CustomAdapter nAdapter;
+    private WeightAdapter nAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +46,9 @@ public class RecordWeightActivity extends AppCompatActivity {
         // 데이터베이스에 저장된 체중 데이터를 조회해 ArrayList<WeightItem> 형태로 반환
         mWeightItems = mDBHelper.getPetWeightByUser(userID);
         if(nAdapter == null){
-            // nAdapter 가 초기화되지 않았으면 CustomAdapter 인스턴스를 생성
+            // nAdapter 가 초기화되지 않았으면 WeightAdapter 인스턴스를 생성
             // 해당 어댑터는 mWeightItems 리스트를 사용해 RecyclerView 에 데이터 표시
-            nAdapter = new CustomAdapter(mWeightItems, this);
+            nAdapter = new WeightAdapter(mWeightItems, this);
             mrv_weight.setHasFixedSize(true);
             // RecyclerView 에 어댑터를 설정
             mrv_weight.setAdapter(nAdapter);

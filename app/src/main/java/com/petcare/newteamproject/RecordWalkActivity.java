@@ -48,7 +48,7 @@ public class RecordWalkActivity extends AppCompatActivity {
         mWalkItems = mDBHelper.getPetWalkByUser(userID);
         Log.d("RecordWalkActivity", "Loaded " + mWalkItems.size() + " walk items for user: " + userID);
         if (nAdapter == null) {
-            // nAdapter 가 초기화되지 않았으면 CustomAdapter 인스턴스를 생성
+            // nAdapter 가 초기화되지 않았으면 WalkAdapter 인스턴스를 생성
             // 해당 어댑터는 mWalkItems 리스트를 사용해 RecyclerView 에 데이터 표시
             nAdapter = new WalkAdapter(mWalkItems, this);
             mrv_walk.setHasFixedSize(true);

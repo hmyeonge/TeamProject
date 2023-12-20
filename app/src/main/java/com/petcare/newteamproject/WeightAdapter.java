@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder>
+public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.ViewHolder>
 {
     // nWeightItems: RecyclerView에서 표시될 데이터를 포함하는 WeightItem 객체들의 집합
     private ArrayList<WeightItem> nWeightItems;
@@ -19,7 +19,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     private DBHelper nDBHelper;
 
     // 생성자
-    public CustomAdapter(ArrayList<WeightItem> nWeightItems, Context nContext) {
+    public WeightAdapter(ArrayList<WeightItem> nWeightItems, Context nContext) {
         this.nWeightItems = nWeightItems;
         this.nContext = nContext;
         // nDBHelper 인스턴스 생성
@@ -29,7 +29,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @NonNull
     @Override
     // onCreateViewHolder 메소드 : RecyclerView 에 표시될 각 아이템의 뷰 홀더 객체 생성
-    public CustomAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public WeightAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // LayoutInflater : XML 에  정의된 뷰를 실제 뷰 객체로 변환 (R.layout.item_list 를 사용해 새로운 뷰 객체 생성)
         View holder = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
         // 위에서 생성된 뷰를 사용해 ViewHolder 객체를 생성
@@ -39,7 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     // RecyclerView 의 각 아이팀에 데이터를 바인딩
-    public void onBindViewHolder(@NonNull CustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WeightAdapter.ViewHolder holder, int position) {
         // ViewHolder 컨테이너의 뷰 요소들을 해당 데이터로 업데이트
         // String.valueOf 메소드 : Double 타입의 'weight' 값을 String 으로 변환
         holder.tv_weight.setText(String.valueOf(nWeightItems.get(position).getWeight()));
