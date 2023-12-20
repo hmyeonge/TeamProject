@@ -19,7 +19,6 @@ public class WalkItem {
         this.writeDate = writeDate;
     }
 
-    // Getter 및 Setter 메소드
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

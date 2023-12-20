@@ -2,10 +2,10 @@ package com.petcare.newteamproject;
 
 public class WeightItem
 {
-    private int id; // 체중 항목의 고유 ID
-    private String userID; // 사용자 ID
-    private Double weight; // 체중 값
-    private String writeDate; // 작성 날짜
+    private int id;
+    private String userID;
+    private Double weight;
+    private String writeDate;
 
     public WeightItem()
     {
@@ -18,7 +18,6 @@ public class WeightItem
         this.writeDate = writeDate;
     }
 
-    // Getter 및 Setter 메소드
     public int getId() {
         return id;
     }

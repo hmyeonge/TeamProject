@@ -11,35 +11,35 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
 public class WalkAdapter extends RecyclerView.Adapter<WalkAdapter.WalkViewHolder> {
     private ArrayList<WalkItem> nWalkItems;
     private Context nContext;
     private DBHelper nDBHelper;
 
-    // 생성자
+
     public WalkAdapter(ArrayList<WalkItem> nWalkItems, Context nContext) {
         this.nWalkItems = nWalkItems;
         this.nContext = nContext;
         nDBHelper = new DBHelper(nContext);
     }
 
+    // 뷰 홀더 클래스 레이아웃 가져옴
     @NonNull
     @Override
     public WalkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // 뷰 홀더에 사용될 레이아웃을 item_walk_list.xml 에서 가져옴
         View holder = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_walk_list, parent, false);
         return new WalkViewHolder(holder);
     }
 
+    // 아이템에 데이터 바인딩
     @Override
     public void onBindViewHolder(@NonNull WalkViewHolder holder, int position) {
         WalkItem walkItem = nWalkItems.get(position);
-        Log.d("WalkAdapter", "Time: " + walkItem.getTime() + ", Date: " + walkItem.getWriteDate());
-        // 'time' 과 'writeDate' 필드의 값을 TextView 에 설정
         holder.tvTime.setText(walkItem.getTime());
         holder.tvDate.setText(walkItem.getWriteDate());
     }
+
+    // 리사이클러뷰에 표시될 아이템 총개수 반환
     @Override
     public int getItemCount() {
         if (nWalkItems == null) {
@@ -58,12 +58,5 @@ public class WalkAdapter extends RecyclerView.Adapter<WalkAdapter.WalkViewHolder
             tvTime = itemView.findViewById(R.id.tv_walk_time);
             tvDate = itemView.findViewById(R.id.tv_date2);
         }
-    }
-
-    // 액티비티에서 호출되는 함수, 현재 어댑터에 새로운 아이템을 전달받아 추가
-    public void addItem(WalkItem _item){
-        // 역순으로 데이터 정렬 : 항상 최신 아이템이 맨 위로 오도록
-        nWalkItems.add(0, _item);
-        notifyItemInserted(0);
     }
 }
