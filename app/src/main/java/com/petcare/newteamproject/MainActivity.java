@@ -1,11 +1,12 @@
 package com.petcare.newteamproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -17,6 +18,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     private Chronometer chronometer;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Button saveWeightButton = findViewById(R.id.save_weight_button);
         weightInput = findViewById(R.id.weight_input);
         chronometer = findViewById(R.id.chronometer);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
 
         dbHelper = new DBHelper(this);
 
@@ -83,6 +88,31 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent( MainActivity.this, RecordWalkActivity.class);
                 startActivity(intent);
             }
+        });
+
+        // 네비게이션 바
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
+
+                switch (menuItem.getItemId()){
+                    case R.id.menu_main:
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.menu_mypage:
+                        // 마이페이지 화면으로 이동
+                        break;
+                    case R.id.menu_calendar:
+                        // 캘린더 화면으로 이동
+                        break;
+                    case R.id.menu_setting:
+                        // 설정화면으로 이동
+                        break;
+                }
+                return true;
+            }
+
         });
 
     }
